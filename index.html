@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paw Quest · Animal Welfare Society Recruitment</title>
+  <meta name="description"
+    content="Join our Animal Welfare Society! 7 cozy quest levels, team selection, commitment check, and your custom Rescuer Card.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/logo.png">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="paper-bg">
+  <!-- Subtle Background Floating Paws -->
+  <div class="paw-bg-decorations" aria-hidden="true">
+    <span class="float-paw p1">🐾</span>
+    <span class="float-paw p2">🐾</span>
+    <span class="float-paw p3">🐾</span>
+    <span class="float-paw p4">🐾</span>
+    <span class="float-paw p5">🐾</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon-wrapper">
+          <img src="images/logo.png" alt="AU Animal Welfare Society" class="brand-logo-img">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Paw Quest</span>
+          <span class="brand-subtitle">AU Animal Welfare Society</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Audio SFX Toggle Button -->
+        <button id="audioToggleBtn" class="action-btn" title="Toggle Sound Effects" aria-label="Toggle Sound Effects">
+          <span id="audioIcon" class="btn-icon">🔊</span>
+          <span id="audioText" class="btn-text">Audio On</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 7-Level Quest Stepper -->
+    <div class="quest-progress-bar-wrapper">
+      <div class="quest-progress-track">
+        <div id="progressFill" class="quest-progress-fill" style="width: 14.28%;"></div>
+      </div>
+      <div class="quest-steps-row">
+        <button class="step-node active" data-step="1" title="Level 1: Welcome">
+          <span class="node-icon">🐶</span>
+          <span class="node-label">Welcome</span>
+        </button>
+        <button class="step-node" data-step="2" title="Level 2: Council">
+          <span class="node-icon">🧑‍🤝‍🧑</span>
+          <span class="node-label">Council</span>
+        </button>
+        <button class="step-node" data-step="3" title="Level 3: Details">
+          <span class="node-icon">🐱</span>
+          <span class="node-label">Details</span>
+        </button>
+        <button class="step-node" data-step="4" title="Level 4: Teams">
+          <span class="node-icon">🏠</span>
+          <span class="node-label">Teams</span>
+        </button>
+        <button class="step-node" data-step="5" title="Level 5: Story">
+          <span class="node-icon">📝</span>
+          <span class="node-label">Story</span>
+        </button>
+        <button class="step-node" data-step="6" title="Level 6: Commitment">
+          <span class="node-icon">⏰</span>
+          <span class="node-label">Commitment</span>
+        </button>
+        <button class="step-node" data-step="7" title="Level 7: Rescuer Card">
+          <span class="node-icon">🎁</span>
+          <span class="node-label">Rescuer Card</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="main-content">
+    <div class="quest-card-container">
+
+      <!-- ================= LEVEL 1: WELCOME ================= -->
+      <section id="level-1" class="quest-screen active">
+        <div class="hero-welcome">
+          <div class="welcome-badge">
+            <span class="pulse-dot"></span> Official Recruitment Quest · Fall 2026
+          </div>
+          <h1 class="quest-hero-title">Every Paw Matters.<br><span class="highlight-text">Be Their Voice.</span></h1>
+          <p class="quest-hero-description">
+            Welcome to the <strong>Animal Welfare Society</strong>! We are a family of passionate students, animal
+            lovers, and campus caretakers dedicated to rescuing, treating, feeding, and rehoming vulnerable strays.
+          </p>
+
+          <div class="quest-perks-grid">
+            <div class="perk-card">
+              <span class="perk-emoji">🚑</span>
+              <div>
+                <strong>Active 24/7 Rescues</strong>
+                <p>On-the-ground medical care & emergency transport.</p>
+              </div>
+            </div>
+            <div class="perk-card">
+              <span class="perk-emoji">🎓</span>
+              <div>
+                <strong>Class Lenience Support</strong>
+                <p>Official society attendance backing during active rescues.</p>
+              </div>
+            </div>
+            <div class="perk-card">
+              <span class="perk-emoji">🪪</span>
+              <div>
+                <strong>Official Rescuer ID</strong>
+                <p>Get a shareable digital badge upon completion.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Campus Animal Friends Characters Parade -->
+          <div class="characters-showcase-section">
+            <div class="characters-header">
+              <span class="characters-badge">Meet Our Campus Pals</span>
+              <h3 class="characters-title">The Friends We Protect & Care For</h3>
+              <p class="characters-subtitle">Click on any animal friend below to hear their voice & message!</p>
+            </div>
+
+            <div class="animal-characters-grid">
+              <!-- 1. Dog -->
+              <div class="animal-char-card" data-animal="dog"
+                data-speech="Woof! Every stray pup on campus deserves protection and love!">
+                <div class="char-avatar-bubble dog-bg">
+                  <span class="char-emoji">🐶</span>
+                  <span class="char-mini-badge">Loyal</span>
+                </div>
+                <strong class="char-name">Dog</strong>
+                <span class="char-species">Campus Guardian</span>
+              </div>
+
+              <!-- 2. Cat -->
+              <div class="animal-char-card" data-animal="cat"
+                data-speech="Purr... Thank you for keeping our campus safe, warm, and gentle!">
+                <div class="char-avatar-bubble cat-bg">
+                  <span class="char-emoji">🐱</span>
+                  <span class="char-mini-badge">Gentle</span>
+                </div>
+                <strong class="char-name">Cat</strong>
+                <span class="char-species">Whisker Friend</span>
+              </div>
+
+              <!-- 3. Rabbit -->
+              <div class="animal-char-card" data-animal="rabbit"
+                data-speech="Hop! Quick rescue response saves small fragile lives every single day!">
+                <div class="char-avatar-bubble rabbit-bg">
+                  <span class="char-emoji">🐰</span>
+                  <span class="char-mini-badge">Swift</span>
+                </div>
+                <strong class="char-name">Rabbit</strong>
+                <span class="char-species">Quiet Hopper</span>
+              </div>
+
+              <!-- 4. Bird -->
+              <div class="animal-char-card" data-animal="bird"
+                data-speech="Chirp! We need safe campus trees, water bowls, and gentle skies!">
+                <div class="char-avatar-bubble bird-bg">
+                  <span class="char-emoji">🐦</span>
+                  <span class="char-mini-badge">Free</span>
+                </div>
+                <strong class="char-name">Bird</strong>
+                <span class="char-species">Sky Singer</span>
+              </div>
+
+              <!-- 5. Turtle -->
+              <div class="animal-char-card" data-animal="turtle"
+                data-speech="Slow and steady, compassion and lifelong care protect our campus environment!">
+                <div class="char-avatar-bubble turtle-bg">
+                  <span class="char-emoji">🐢</span>
+                  <span class="char-mini-badge">Wise</span>
+                </div>
+                <strong class="char-name">Turtle</strong>
+                <span class="char-species">Peaceful Shell</span>
+              </div>
+
+              <!-- 6. Fish -->
+              <div class="animal-char-card" data-animal="fish"
+                data-speech="Splash! Clean water bowls and safe campus pond life matter to all of us!">
+                <div class="char-avatar-bubble fish-bg">
+                  <span class="char-emoji">🐟</span>
+                  <span class="char-mini-badge">Calm</span>
+                </div>
+                <strong class="char-name">Fish</strong>
+                <span class="char-species">Aqua Soul</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Character Speech Balloon -->
+            <div id="characterSpeechBox" class="character-speech-bubble">
+              <span class="speech-quote-icon">💬</span>
+              <p id="characterSpeechText">Click on any animal friend above to listen to their voice and message!</p>
+            </div>
+          </div>
+
+
+          <div class="welcome-box-callout">
+            <span class="callout-icon">💡</span>
+            <div>
+              <strong>Quick Quest Briefing:</strong>
+              <p>7 quick levels • Takes ~4 minutes • Real-time save • Direct WhatsApp community pass.</p>
+            </div>
+          </div>
+
+          <div class="screen-footer single-action">
+            <button id="btnStartQuest" class="primary-btn btn-lg">
+              <span>Begin Your Rescuer Quest</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= LEVEL 2: MEET THE COUNCIL ================= -->
+      <section id="level-2" class="quest-screen">
+        <div class="screen-header">
+          <span class="level-indicator">Level 2 of 7</span>
+          <h2 class="screen-title">Meet Your Council Leaders</h2>
+          <p class="screen-subtitle">Meet the team who keeps the paws safe and the society running.</p>
+        </div>
+
+        <div class="council-grid three-executives-grid">
+
+          <!-- ========================================================
+               1. ARSLAN · PRESIDENT
+               ======================================================== -->
+          <div class="council-card executive-card">
+            <div class="avatar-ring photo-ring">
+              <!-- 📸 ARSLAN'S PHOTO: Type your image destination below (e.g. "images/arslan.jpg") -->
+              <img src="images/arslan.jpg" alt="Arslan - President" class="council-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="avatar-hero-fallback dog-hero-theme">🐶</div>
+            </div>
+            <h3 class="council-name">Arslan</h3>
+            <span class="council-role">President · Society Lead</span>
+            <p class="council-quote">"True empathy is not just feeling sorry for an animal; it is kneeling down to help
+              them get back on their feet. We lead with loyalty, courage, and action."</p>
+          </div>
+
+          <!-- ========================================================
+               2. AREEJ · VICE PRESIDENT
+               ======================================================== -->
+          <div class="council-card executive-card">
+            <div class="avatar-ring photo-ring">
+              <!-- 📸 AREEJ'S PHOTO: Type your image destination below (e.g. "images/areej.jpg") -->
+              <img src="images/areej.jpg" alt="Areej - Vice President" class="council-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="avatar-hero-fallback cat-hero-theme">🐱</div>
+            </div>
+            <h3 class="council-name">Areej</h3>
+            <span class="council-role">Vice President · Council Lead</span>
+            <p class="council-quote">"Every whisper, purr, and silent cry deserves protection. We manage our resources,
+              protect our rescuers, and ensure no vulnerable life is left behind."</p>
+          </div>
+
+          <!-- ========================================================
+               3. ALI · GENERAL SECRETARY
+               ======================================================== -->
+          <div class="council-card executive-card">
+            <div class="avatar-ring photo-ring">
+              <!-- 📸 ALI'S PHOTO: Type your image destination below (e.g. "images/ali.jpg") -->
+              <img src="images/ali.jpg" alt="Ali - General Secretary" class="council-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="avatar-hero-fallback rabbit-hero-theme">🐰</div>
+            </div>
+            <h3 class="council-name">Ali</h3>
+            <span class="council-role">General Secretary · Council Lead</span>
+            <p class="council-quote">"Quick to respond, organized in action. Every campus rescue dispatch, vaccination
+              camp, and volunteer coordination begins with steady dedication."</p>
+          </div>
+
+        </div>
+
+        <div class="screen-footer">
+          <button class="nav-btn prev-btn" data-target="1">
+            <span>← Back</span>
+          </button>
+          <button class="primary-btn next-btn" data-target="3">
+            <span>Continue to My Details</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= LEVEL 3: YOUR DETAILS ================= -->
+      <section id="level-3" class="quest-screen">
+        <div class="screen-header">
+          <span class="level-indicator">Level 3 of 7</span>
+          <h2 class="screen-title">Your Details 🐱</h2>
+          <p class="screen-subtitle">Let's get acquainted! Tell us how we can reach you for drives & alerts.</p>
+        </div>
+
+        <form id="formLevel3" class="form-flow" onsubmit="return false;">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fullName">1. Full Name <span class="required">*</span></label>
+              <input type="text" id="fullName" name="fullName" placeholder="e.g. Bilal Sadeeq" required>
+            </div>
+
+            <div class="form-group">
+              <label for="rollNo">2. Roll Number / Student ID <span class="required">*</span></label>
+              <input type="text" id="rollNo" name="rollNo" placeholder="e.g. 231XXX" required>
+            </div>
+
+            <div class="form-group">
+              <label for="degreeSem">3. Degree & Semester <span class="required">*</span></label>
+              <input type="text" id="degreeSem" name="degreeSem" placeholder="e.g. BS Software Engineering · 4th Sem"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="uniEmail">4. University Email <span class="required">*</span></label>
+              <input type="email" id="uniEmail" name="uniEmail" placeholder="e.g. 231XXX@students.au.edu.pk" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="whatsappNo">5. WhatsApp Number <span class="required">*</span></label>
+              <input type="tel" id="whatsappNo" name="whatsappNo" placeholder="e.g. +92 300 1234567" required>
+              <span class="field-help">⚠️ Crucial for adding you to the emergency broadcast & applicant WhatsApp
+                group!</span>
+            </div>
+
+            <div class="form-group full-width">
+              <label>6. Have you been part of any society or volunteering work before? <span
+                  class="required">*</span></label>
+              <div class="radio-pill-group">
+                <label class="radio-pill">
+                  <input type="radio" name="pastVolunteering" value="Yes" required>
+                  <span>Yes, I have volunteering experience</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="pastVolunteering" value="No">
+                  <span>No, this will be my first time</span>
+                </label>
+              </div>
+
+              <div id="volunteerDetailsBox" class="conditional-input hidden">
+                <label for="volunteerDetails">Briefly describe your past volunteering or society role:</label>
+                <textarea id="volunteerDetails" rows="2"
+                  placeholder="e.g. Volunteered at a local animal shelter, managed event registration for CS society..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen-footer">
+            <button type="button" class="nav-btn prev-btn" data-target="2">
+              <span>← Back</span>
+            </button>
+            <button type="button" id="btnNextLevel3" class="primary-btn">
+              <span>Next: Choose Your Team</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ================= LEVEL 4: CHOOSE YOUR TEAM ================= -->
+      <section id="level-4" class="quest-screen">
+        <div class="screen-header">
+          <span class="level-indicator">Level 4 of 7</span>
+          <h2 class="screen-title">Choose Your Team 🏠</h2>
+          <p class="screen-subtitle">Select where your heart and skills shine brightest in our animal welfare mission.
+          </p>
+        </div>
+
+        <form id="formLevel4" class="form-flow" onsubmit="return false;">
+          <div class="section-label">
+            <strong>7. Select Your 1st Choice Team</strong> <span class="required">*</span>
+            <p>Pick the primary squad you want to join:</p>
+          </div>
+
+          <!-- Team Selection Grid with Themed Names -->
+          <div class="team-cards-grid" id="teamCardsGrid">
+
+            <!-- Paw Patrol HQ (Core Team) -->
+            <div class="team-card" data-team="core">
+              <div class="team-card-header">
+                <span class="team-emoji">🐾</span>
+                <span class="team-vibe-tag">Leads & Decides</span>
+              </div>
+              <h3 class="team-title">Paw Patrol HQ</h3>
+              <span class="team-alt-name">Core Council Team</span>
+              <p class="team-desc">Strategic planning, administrative backing, crisis leadership, budget management, and
+                volunteer coordination.</p>
+              <div class="team-select-indicator">Selected ✓</div>
+            </div>
+
+            <!-- Tail Savers (Rescue Team) -->
+            <div class="team-card" data-team="rescue">
+              <div class="team-card-header">
+                <span class="team-emoji">🚑</span>
+                <span class="team-vibe-tag emergency">24/7 First Responders</span>
+              </div>
+              <h3 class="team-title">Tail Savers</h3>
+              <span class="team-alt-name">Rescue Team</span>
+              <p class="team-desc">On-call 24/7 for emergency rescues, medical first aid, stray feeding, and vet visits
+                across campus.</p>
+              <div class="team-select-indicator">Selected ✓</div>
+            </div>
+
+            <!-- Paw-ty Planners (Event Management) -->
+            <div class="team-card" data-team="events">
+              <div class="team-card-header">
+                <span class="team-emoji">🎪</span>
+                <span class="team-vibe-tag">Drives & Camps</span>
+              </div>
+              <h3 class="team-title">Paw-ty Planners</h3>
+              <span class="team-alt-name">Event Management</span>
+              <p class="team-desc">Organizing adoption camps, free rabies vaccination drives, fundraising bake sales,
+                and stray welfare stalls.</p>
+              <div class="team-select-indicator">Selected ✓</div>
+            </div>
+
+            <!-- The Purr-suaders (Social Media) -->
+            <div class="team-card" data-team="social">
+              <div class="team-card-header">
+                <span class="team-emoji">📱</span>
+                <span class="team-vibe-tag">Awareness & Stories</span>
+              </div>
+              <h3 class="team-title">The Purr-suaders</h3>
+              <span class="team-alt-name">Social Media & PR</span>
+              <p class="team-desc">Crafting heartwarming viral reels, writing adoption appeals, handling
+                Instagram/LinkedIn, and community outreach.</p>
+              <div class="team-select-indicator">Selected ✓</div>
+            </div>
+
+            <!-- Reel Rescuers (Video Editing) -->
+            <div class="team-card" data-team="video">
+              <div class="team-card-header">
+                <span class="team-emoji">🎬</span>
+                <span class="team-vibe-tag">Rescue Reels</span>
+              </div>
+              <h3 class="team-title">Reel Rescuers</h3>
+              <span class="team-alt-name">Video Editing Team</span>
+              <p class="team-desc">Editing dramatic rescue footage, emotional before-and-after transformations, and
+                dynamic event recaps.</p>
+              <div class="team-select-indicator">Selected ✓</div>
+            </div>
+
+            <!-- Fur-ever Creatives (Graphics Team) -->
+            <div class="team-card" data-team="graphics">
+              <div class="team-card-header">
+                <span class="team-emoji">🎨</span>
+                <span class="team-vibe-tag">Posters & Branding</span>
+              </div>
+              <h3 class="team-title">Fur-ever Creatives</h3>
+              <span class="team-alt-name">Graphics & Design</span>
+              <p class="team-desc">Designing eye-catching adoption posters, society merch, stickers, badges, and
+                educational carousels.</p>
+              <div class="team-select-indicator">Selected ✓</div>
+            </div>
+
+          </div>
+
+          <input type="hidden" id="firstChoiceTeam" name="firstChoiceTeam" value="" required>
+
+          <div class="form-grid" style="margin-top: 1.5rem;">
+            <!-- Role Selection: Squad Lead vs Team Member -->
+            <div class="form-group full-width role-selection-wrapper">
+              <label>8. What role are you applying for in your team? <span class="required">*</span></label>
+              <p class="field-subtext">Choose your desired level of responsibility within your squad:</p>
+              <div class="role-pills-row">
+                <label class="role-pill-option">
+                  <input type="radio" name="teamRole" value="Lead" required>
+                  <div class="role-card-box">
+                    <span class="role-icon">👑</span>
+                    <div class="role-text-col">
+                      <strong class="role-title">Squad Lead / Co-Lead</strong>
+                      <span class="role-desc">Takes ownership, leads drives & meetings, coordinates volunteers, high
+                        responsibility.</span>
+                    </div>
+                    <span class="role-tag leadership">Leader</span>
+                  </div>
+                </label>
+                <label class="role-pill-option">
+                  <input type="radio" name="teamRole" value="Member">
+                  <div class="role-card-box">
+                    <span class="role-icon">🐾</span>
+                    <div class="role-text-col">
+                      <strong class="role-title">Active Team Member / Cadet</strong>
+                      <span class="role-desc">Hands-on contributor, attends rescue calls, creates media/designs, assists
+                        in drives.</span>
+                    </div>
+                    <span class="role-tag member">Member</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="secondChoiceTeam">9. Second Choice Team (Backup Squad) <span class="required">*</span></label>
+              <select id="secondChoiceTeam" name="secondChoiceTeam" required>
+                <option value="">-- Choose your backup squad --</option>
+                <option value="core">🐾 Paw Patrol HQ (Core Team)</option>
+                <option value="rescue">🚑 Tail Savers (Rescue Team)</option>
+                <option value="events">🎪 Paw-ty Planners (Event Management)</option>
+                <option value="social">📱 The Purr-suaders (Social Media)</option>
+                <option value="video">🎬 Reel Rescuers (Video Editing)</option>
+                <option value="graphics">🎨 Fur-ever Creatives (Graphics & Design)</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="whyTeam">10. Why did you choose this team & role? (2–3 lines) <span
+                  class="required">*</span></label>
+              <textarea id="whyTeam" name="whyTeam" rows="3"
+                placeholder="Tell us why your skills and heart match this team and role..." required></textarea>
+            </div>
+          </div>
+
+          <div class="screen-footer">
+            <button type="button" class="nav-btn prev-btn" data-target="3">
+              <span>← Back</span>
+            </button>
+            <button type="button" id="btnNextLevel4" class="primary-btn">
+              <span>Next: Your Story</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ================= LEVEL 5: YOUR STORY ================= -->
+      <section id="level-5" class="quest-screen">
+        <div class="screen-header">
+          <span class="level-indicator">Level 5 of 7</span>
+          <h2 class="screen-title">Your Story 📝</h2>
+          <p class="screen-subtitle">Every rescuer has a reason why. Share what inspires your love for animals.</p>
+        </div>
+
+        <form id="formLevel5" class="form-flow" onsubmit="return false;">
+          <div class="form-group">
+            <label for="q10CareMeaning">10. What does caring for animals mean to you personally? <span
+                class="required">*</span></label>
+            <textarea id="q10CareMeaning" name="q10CareMeaning" rows="3"
+              placeholder="Speak from the heart—what makes their well-being matter to you?" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="q11HelpedStray">11. Have you ever helped a stray or injured animal? Tell us what happened. <span
+                class="required">*</span></label>
+            <textarea id="q11HelpedStray" name="q11HelpedStray" rows="3"
+              placeholder="Describe a time you fed, comforted, rescued, or provided medical care to an animal (or how you wish to start)..."
+              required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="q12SkillsBrought">12. What skills, ideas, or passion could you bring to the society? <span
+                class="required">*</span></label>
+            <textarea id="q12SkillsBrought" name="q12SkillsBrought" rows="3"
+              placeholder="Any special talents? (e.g. driving, photography, vet connections, organization, public speaking, empathy)..."
+              required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>13. How comfortable are you around animals, including injured or distressed ones? <span
+                class="required">*</span></label>
+            <div class="choice-cards-row">
+              <label class="choice-card">
+                <input type="radio" name="q13Comfort" value="Very" required>
+                <div class="card-inner">
+                  <span class="choice-emoji">🟢</span>
+                  <strong>Very Comfortable</strong>
+                  <p>I stay calm, can handle distress, and love being hands-on.</p>
+                </div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="q13Comfort" value="Somewhat">
+                <div class="card-inner">
+                  <span class="choice-emoji">🟡</span>
+                  <strong>Somewhat Comfortable</strong>
+                  <p>I love them, but might need a second to assess or guidance.</p>
+                </div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="q13Comfort" value="Learning">
+                <div class="card-inner">
+                  <span class="choice-emoji">🔵</span>
+                  <strong>Eager to Learn</strong>
+                  <p>A bit cautious, but passionate to learn safe handling techniques.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="screen-footer">
+            <button type="button" class="nav-btn prev-btn" data-target="4">
+              <span>← Back</span>
+            </button>
+            <button type="button" id="btnNextLevel5" class="primary-btn">
+              <span>Next: Commitment Check</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ================= LEVEL 6: COMMITMENT CHECK ================= -->
+      <section id="level-6" class="quest-screen">
+        <div class="screen-header">
+          <span class="level-indicator">Level 6 of 7</span>
+          <h2 class="screen-title">Commitment Check & Squad Readiness ⏰</h2>
+          <p class="screen-subtitle">Animal welfare is noble, unpredictable work. Please answer these honestly.</p>
+        </div>
+
+        <!-- Strict Filtering Section Notice at the very top (No repetitive badges on each question) -->
+        <div class="strict-header-top-banner">
+          <div class="strict-top-icon">⚠️</div>
+          <div class="strict-top-text">
+            <h4>Strict Filtering Section</h4>
+            <p>Please read and answer all questions in this level with complete honesty. Because animal welfare
+              emergencies involve real lives, active duty requires strict availability, attendance flexibility when
+              emergencies hit, and mandatory volunteer safety protocols. Disqualifying answers will pause the
+              application.</p>
+          </div>
+        </div>
+
+        <form id="formLevel6" class="form-flow" onsubmit="return false;">
+
+          <!-- PART A: General Commitment (Everyone including Core Team) -->
+          <div class="form-section-banner">
+            <span class="section-badge">Part A</span>
+            <div>
+              <h3>General Commitment (All Applicants & Core Team)</h3>
+              <p>Welfare emergencies do not follow a fixed timetable.</p>
+            </div>
+          </div>
+
+          <!-- Q14: Miss Class -->
+          <div class="filter-question-card">
+            <div class="question-header">
+              <label>14. Welfare work can come up at any time. Are you willing to miss a class when truly needed? <span
+                  class="required">*</span></label>
+            </div>
+            <p class="question-note">When an animal is critically bleeding or stuck, waiting 2 hours after a lecture can
+              be fatal.</p>
+            <div class="radio-pill-group">
+              <label class="radio-pill">
+                <input type="radio" name="q14MissClass" value="Yes" required>
+                <span>Yes, absolutely ready</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="q14MissClass" value="Sometimes">
+                <span>Sometimes (when critical)</span>
+              </label>
+              <label class="radio-pill danger-opt">
+                <input type="radio" name="q14MissClass" value="No">
+                <span>No, I will never miss a class</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q15: Leniency Agreement -->
+          <div class="filter-question-card">
+            <div class="question-header">
+              <label>15. We will request official attendance leniency from teachers for you, but you must actively help
+                when the society needs you. Do you agree? <span class="required">*</span></label>
+            </div>
+            <p class="question-note">Society permissions are granted only to active, reliable responders.</p>
+            <div class="radio-pill-group">
+              <label class="radio-pill">
+                <input type="radio" name="q15Leniency" value="Yes" required>
+                <span>Yes, I agree wholeheartedly</span>
+              </label>
+              <label class="radio-pill danger-opt">
+                <input type="radio" name="q15Leniency" value="No">
+                <span>No, I cannot commit to this</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q16: Hours -->
+          <div class="filter-question-card">
+            <div class="question-header">
+              <label>16. How many hours a week can you realistically give to society work? <span
+                  class="required">*</span></label>
+            </div>
+            <div class="radio-pill-group">
+              <label class="radio-pill">
+                <input type="radio" name="q16Hours" value="1-3" required>
+                <span>1 – 3 hours/week</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="q16Hours" value="4-6">
+                <span>4 – 6 hours/week</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="q16Hours" value="7+">
+                <span>7+ hours/week (Highly Active)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q17: Campus Presence -->
+          <div class="filter-question-card">
+            <div class="question-header">
+              <label>17. Will you be on campus most days of the week? <span class="required">*</span></label>
+            </div>
+            <div class="radio-pill-group">
+              <label class="radio-pill">
+                <input type="radio" name="q17Campus" value="Yes" required>
+                <span>Yes, daily</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="q17Campus" value="Partly">
+                <span>Partly (3-4 days/week)</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="q17Campus" value="Mostly not">
+                <span>Mostly not (Hostelite/Off-campus)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q18: Responsibility -->
+          <div class="filter-question-card">
+            <div class="question-header">
+              <label>18. Do you understand that society membership means real hands-on responsibility, not just a CV
+                title? <span class="required">*</span></label>
+            </div>
+            <div class="radio-pill-group">
+              <label class="radio-pill">
+                <input type="radio" name="q18Responsibility" value="Yes" required>
+                <span>Yes, I understand and commit</span>
+              </label>
+              <label class="radio-pill danger-opt">
+                <input type="radio" name="q18Responsibility" value="No">
+                <span>No, I just wanted the title</span>
+              </label>
+            </div>
+          </div>
+
+
+          <!-- PART B: SPECIFIC TEAM QUESTIONS ONLY (Rendered dynamically based on selected squad) -->
+          <div class="form-section-banner specific-team-banner">
+            <span class="section-badge purple">Part B</span>
+            <div>
+              <h3 id="partBTeamTitle">Specific Team Questions <span class="required">*</span></h3>
+              <p id="partBTeamSubtitle">Mandatory questions for your selected team.</p>
+            </div>
+          </div>
+
+          <div id="partBSpecificQuestionsContainer" class="dynamic-questions-flow">
+            <!-- Dynamically injected via JavaScript strictly for the user's specific team -->
+          </div>
+
+          <div class="screen-footer">
+            <button type="button" class="nav-btn prev-btn" data-target="5">
+              <span>← Back</span>
+            </button>
+            <button type="button" id="btnNextLevel6" class="primary-btn">
+              <span>Next: Final Review</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ================= LEVEL 7: REVIEW + SUBMIT & RESCUER CARD ================= -->
+      <section id="level-7" class="quest-screen">
+        <div class="screen-header">
+          <span class="level-indicator">Level 7 of 7</span>
+          <h2 class="screen-title">Review & Seal Your Rescuer Quest 🎁</h2>
+          <p class="screen-subtitle">You are just one step away from joining the Animal Welfare Society family!</p>
+        </div>
+
+        <!-- Review Form View -->
+        <div id="submissionReviewView" class="review-wrapper">
+          <div class="review-summary-card">
+            <h3 class="summary-card-title">📋 Application Summary</h3>
+            <div class="summary-details-grid" id="summaryDetailsGrid">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <label for="q25AnythingElse">25. Anything else you'd like us to know? (Optional)</label>
+            <textarea id="q25AnythingElse" rows="2"
+              placeholder="Fostering capabilities, pet care experience, access to tools or transport, etc."></textarea>
+          </div>
+
+          <!-- Q26: Mandatory Confirmation Checkbox -->
+          <div class="final-confirmation-card">
+            <label class="final-check-label">
+              <input type="checkbox" id="q26Confirmation" required>
+              <span class="check-text">
+                <strong>26. Solemn Rescuer Pledge:</strong><br>
+                "I confirm that all information provided above is true and honest. I understand that animal rescue
+                demands genuine commitment, compassion, and teamwork, and I will stay active in the society's official
+                WhatsApp group." <span class="required">*</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="screen-footer">
+            <button type="button" class="nav-btn prev-btn" data-target="6">
+              <span>← Back</span>
+            </button>
+            <button type="button" id="btnSubmitQuest" class="primary-btn btn-lg submit-rainbow">
+              <span>🐾 Submit Rescuer Application</span>
+              <span class="btn-sparkle">✨</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SEPARATE SCREEN: WELCOME TO THE PACK ================= -->
+      <section id="level-success" class="quest-screen">
+        <div class="success-screen-wrapper">
+          <div class="congrats-banner">
+            <div class="congrats-icon">🎉</div>
+            <div class="success-official-tag">Official Pass Issued · @pets.secure</div>
+            <h2>Welcome to the Pack!</h2>
+            <p>Your application has been logged into the Animal Welfare Society registry. Here is your official Society
+              Rescuer Pass:</p>
+          </div>
+
+          <!-- THE RESCUER CARD -->
+          <div class="rescuer-card-container">
+            <div id="rescuerCardElement" class="rescuer-id-badge">
+              <div class="card-glass-glow"></div>
+
+              <div class="badge-top-banner">
+                <div class="badge-org-logo">🐾</div>
+                <div class="badge-org-titles">
+                  <h4>ANIMAL WELFARE SOCIETY</h4>
+                  <span>OFFICIAL CADET PASS · 2026 · @PETS.SECURE</span>
+                </div>
+                <div class="badge-seal">VERIFIED</div>
+              </div>
+
+              <div class="badge-body">
+                <div class="badge-avatar-box">
+                  <div class="badge-animal-avatar" id="badgeAvatarEmoji">🐶</div>
+                  <span class="badge-rank-tag" id="badgeRankTag">Rescue Cadet</span>
+                </div>
+
+                <div class="badge-info-col">
+                  <div class="badge-info-item">
+                    <span class="info-label">CANDIDATE NAME</span>
+                    <strong class="info-val name" id="badgeCandidateName">Candidate Name</strong>
+                  </div>
+                  <div class="badge-info-item">
+                    <span class="info-label">STUDENT ID / ROLL NO</span>
+                    <strong class="info-val" id="badgeCandidateRoll">00-BS-000</strong>
+                  </div>
+                  <div class="badge-info-row">
+                    <div class="badge-info-item">
+                      <span class="info-label">ASSIGNED SQUAD</span>
+                      <strong class="info-val highlight" id="badgeAssignedTeam">Paw Patrol HQ</strong>
+                    </div>
+                    <div class="badge-info-item">
+                      <span class="info-label">RESCUER ID</span>
+                      <strong class="info-val code" id="badgeRescuerId">AWS-2026-0000</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="badge-footer">
+                <div class="badge-barcode-mock">
+                  <div class="barcode-lines"></div>
+                  <span>CODE OF COMPASSION · AWS CHAPTER · @PETS.SECURE</span>
+                </div>
+                <div class="badge-paw-stamp">🐾</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rescuer Card Actions -->
+          <div class="rescuer-actions-row">
+            <button id="btnDownloadCard" class="primary-btn">
+              <span>📥 Download Rescuer Card (PNG)</span>
+            </button>
+            <button id="btnShareApp" class="action-btn">
+              <span>📤 Share Rescuer Badge</span>
+            </button>
+          </div>
+
+          <!-- DEDICATED SOCIAL CONNECT HUB WITH OFFICIAL APP ICONS & @pets.secure -->
+          <div class="social-connect-hub">
+            <div class="social-hub-header">
+              <span class="hub-pill">Official Society Channels</span>
+              <h3 class="hub-title">Stay Connected with @pets.secure 🐾</h3>
+              <p class="hub-desc">Join our official WhatsApp group for rescue callouts and follow our Instagram for
+                campus stray reels, adoption stories, and upcoming welfare drives!</p>
+            </div>
+
+            <div class="social-cards-grid">
+
+              <!-- WHATSAPP CARD -->
+              <a href="https://chat.whatsapp.com/DIAP8VR12M69lTGC2VA4qD?s=sw&p=i&mlu=4&ilr=4&iam=0" target="_blank"
+                rel="noopener noreferrer" class="social-brand-card whatsapp-brand-card">
+                <div class="brand-icon-box wa-bg">
+                  <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12C2 13.85 2.5 15.58 3.38 17.07L2.05 21.95L7.07 20.63C8.52 21.5 10.2 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"
+                      fill="#25D366" />
+                    <path
+                      d="M17.5 14.38C17.2 14.23 15.7 13.5 15.42 13.4C15.14 13.3 14.94 13.25 14.74 13.55C14.54 13.85 13.97 14.52 13.8 14.72C13.63 14.92 13.46 14.94 13.16 14.79C12.86 14.64 11.9 14.33 10.77 13.32C9.89 12.53 9.3 11.56 9.13 11.26C8.96 10.96 9.11 10.8 9.26 10.65C9.4 10.51 9.57 10.29 9.72 10.12C9.87 9.95 9.92 9.83 10.02 9.63C10.12 9.43 10.07 9.26 10 9.11C9.93 8.96 9.33 7.5 9.08 6.9C8.84 6.32 8.6 6.4 8.42 6.39C8.25 6.38 8.05 6.38 7.85 6.38C7.65 6.38 7.33 6.45 7.05 6.75C6.77 7.05 6 7.77 6 9.24C6 10.71 7.08 12.13 7.23 12.33C7.38 12.53 9.33 15.54 12.32 16.83C13.03 17.14 13.59 17.33 14.03 17.47C14.75 17.7 15.4 17.67 15.92 17.59C16.5 17.5 17.7 14.86 17.95 14.16C18.2 13.46 18.2 12.86 18.12 12.74C18.04 12.62 17.8 12.53 17.5 14.38Z"
+                      fill="white" />
+                  </svg>
+                </div>
+                <div class="brand-info-box">
+                  <span class="brand-badge wa-badge">Official WhatsApp Community</span>
+                  <h4 class="brand-title">Join Our WhatsApp Group</h4>
+                  <p class="brand-sub">Emergency rescue alerts & society broadcasts</p>
+                  <div class="brand-handle-pill">Channel: pets.secure</div>
+                  <span class="brand-cta wa-cta">Tap to Join Group →</span>
+                </div>
+              </a>
+
+              <!-- INSTAGRAM CARD -->
+              <a href="https://www.instagram.com/pets.secure/?hl=en" target="_blank" rel="noopener noreferrer"
+                class="social-brand-card instagram-brand-card">
+                <div class="brand-icon-box ig-bg">
+                  <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <radialGradient id="instaGradSuccess" cx="30%" cy="107%" r="150%">
+                        <stop offset="0%" stop-color="#fdf497" />
+                        <stop offset="5%" stop-color="#fdf497" />
+                        <stop offset="45%" stop-color="#fd5949" />
+                        <stop offset="60%" stop-color="#d6249f" />
+                        <stop offset="90%" stop-color="#285AEB" />
+                      </radialGradient>
+                    </defs>
+                    <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#instaGradSuccess)" />
+                    <rect x="6.5" y="6.5" width="11" height="11" rx="3.5" stroke="white" stroke-width="1.8" />
+                    <circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.8" />
+                    <circle cx="15.8" cy="8.2" r="0.9" fill="white" />
+                  </svg>
+                </div>
+                <div class="brand-info-box">
+                  <span class="brand-badge ig-badge">Official Instagram Profile</span>
+                  <h4 class="brand-title">Follow on Instagram</h4>
+                  <p class="brand-sub">Rescue reels, adoption stories & photo updates</p>
+                  <div class="brand-handle-pill">Handle: @pets.secure</div>
+                  <span class="brand-cta ig-cta">Tap to Follow @pets.secure →</span>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+          <div class="next-steps-card" style="margin-top: 1.75rem;">
+            <h4>🐾 What Happens Next?</h4>
+            <ol>
+              <li>Our team council reviews your squad-specific responses within 48 hours.</li>
+              <li>Make sure you have joined the WhatsApp group above to receive orientation timing and emergency
+                call-out guidelines.</li>
+              <li>Share your Rescuer Card on your Instagram Story and tag <strong>@pets.secure</strong> to be featured!
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= STRICT FILTER REJECTION MODAL ================= -->
+  <div id="filterModal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-box compassionate-modal">
+      <div class="modal-heart-icon">❤️🐾</div>
+      <h3 class="modal-title">We Love Your Heart for Animals!</h3>
+      <div class="modal-body-text" id="modalReasonText">
+        <!-- Injected via JS dynamically explaining the specific strict requirement -->
+      </div>
+      <div class="modal-callout-warm">
+        <strong>🐾 Why are our rules so strict?</strong>
+        <p>Because animal lives hang in the balance, active rescue and core roles require immediate availability,
+          attendance sacrifice when emergencies hit, and mandatory safety immunizations.</p>
+      </div>
+      <div class="modal-actions-row">
+        <button id="btnModalRevise" class="primary-btn">
+          <span>Revise & Review My Answers</span>
+        </button>
+        <button id="btnModalSupporter" class="secondary-btn">
+          <span>Join as Honorary Supporter</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ADMIN SUBMISSIONS MODAL ================= -->
+  <div id="adminModal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-box admin-modal-box">
+      <div class="admin-modal-header">
+        <div>
+          <h3>📋 Society Recruitment Submissions</h3>
+          <p>Real-time locally saved applicant data for council review.</p>
+        </div>
+        <button id="btnCloseAdmin" class="close-btn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="admin-actions-bar">
+        <button id="btnExportCSV" class="primary-btn btn-sm">
+          <span>📥 Export to CSV (Excel / Sheets)</span>
+        </button>
+        <button id="btnClearData" class="action-btn secondary btn-sm danger-btn">
+          <span>🗑️ Clear All Submissions</span>
+        </button>
+      </div>
+
+      <div class="table-scroll-wrapper">
+        <table class="submissions-table" id="submissionsTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Roll No</th>
+              <th>1st Choice Team</th>
+              <th>WhatsApp</th>
+              <th>Miss Class?</th>
+              <th>Shots Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="submissionsTableBody">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>🐾 Animal Welfare Society · Powered by Compassion · Every Paw Matters</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+
+</html>
