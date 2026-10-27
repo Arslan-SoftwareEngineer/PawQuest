@@ -130,7 +130,7 @@ Because Paw Quest uses browser-native ES modules and CDN scripts, you can deploy
 ## 🐾 Official Community Channels
 
 - **Instagram:** [@pets.secure](https://www.instagram.com/pets.secure/?hl=en)
-- **WhatsApp Group:** [Official Rescuer Broadcast Channel](https://chat.whatsapp.com/DIAP8VR12M69lTGC2VA4qD)
+- **WhatsApp Channel:** [Official Rescuer Broadcast Channel]([https://chat.whatsapp.com/DIAP8VR12M69lTGC2VA4qD](https://whatsapp.com/channel/0029VbAr64N7IUYYN2NxB10V))
 
 ---
 *Powered by Compassion · AU Animal Welfare Society Chapter · Every Paw Matters*
