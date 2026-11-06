@@ -176,72 +176,6 @@ import { supabase } from './supabase.js';
     }
   }
 
-  // --- ANIMAL SOUND EFFECTS (hosted online, one plays at a time) ---
-  // Source: Google Actions Sound Library (https://developers.google.com/assistant/tools/sound-library)
-  // Licensed CC BY 4.0. Rabbit, Turtle & Fish are near-silent animals, so they use the
-  // closest matching sounds in that library. Swap any URL below to change a sound.
-  const ANIMAL_SOUNDS = {
-    dog:    'https://actions.google.com/sounds/v1/animals/dog_barking.ogg',
-    cat:    'https://actions.google.com/sounds/v1/animals/cat_purr.ogg',
-    rabbit: 'https://actions.google.com/sounds/v1/animals/animal_squealing.ogg',
-    bird:   'https://actions.google.com/sounds/v1/animals/june_songbirds.ogg',
-    turtle: 'https://actions.google.com/sounds/v1/animals/animal_hiss_and_rattle.ogg',
-    fish:   'https://actions.google.com/sounds/v1/water/large_bubbles_surfacing.ogg'
-  };
-
-  const ANIMAL_MATCHERS = [
-    ['dog',    /\b(dog|puppy|pup)\b|🐶|🐕/i],
-    ['cat',    /\b(cat|kitten|kitty)\b|🐱|🐈/i],
-    ['rabbit', /\b(rabbit|bunny)\b|🐰|🐇/i],
-    ['bird',   /\b(bird|parrot|sparrow)\b|🐦|🐤|🐥|🦜/i],
-    ['turtle', /\b(turtle|tortoise)\b|🐢/i],
-    ['fish',   /\b(fish)\b|🐟|🐠|🐡/i]
-  ];
-
-  let currentAnimalAudio = null;
-
-  // Works out which animal a card is, from its data attributes, id, class or visible text/emoji
-  function resolveAnimalKey(card) {
-    const sources = [
-      card.dataset.animal, card.dataset.char, card.dataset.character,
-      card.dataset.name, card.dataset.type, card.dataset.sound,
-      card.id, card.className, card.getAttribute('aria-label'),
-      card.textContent
-    ];
-    for (const src of sources) {
-      if (!src) continue;
-      const text = String(src);
-      if (ANIMAL_SOUNDS[text.toLowerCase().trim()]) return text.toLowerCase().trim();
-      for (const [key, regex] of ANIMAL_MATCHERS) {
-        if (regex.test(text)) return key;
-      }
-    }
-    return null;
-  }
-
-  function stopAnimalSound() {
-    if (currentAnimalAudio) {
-      currentAnimalAudio.pause();
-      currentAnimalAudio.currentTime = 0;
-      currentAnimalAudio = null;
-    }
-  }
-
-  function playAnimalSound(key) {
-    stopAnimalSound(); // always stop whatever was playing before
-    if (!state.audioEnabled || !key || !ANIMAL_SOUNDS[key]) return;
-    const audio = new Audio(ANIMAL_SOUNDS[key]);
-    audio.volume = 0.85;
-    currentAnimalAudio = audio;
-    audio.addEventListener('ended', () => {
-      if (currentAnimalAudio === audio) currentAnimalAudio = null;
-    });
-    audio.play().catch(err => {
-      console.warn('Animal sound failed to play', err);
-      if (currentAnimalAudio === audio) currentAnimalAudio = null;
-    });
-  }
-
   // --- LOCAL STORAGE HANDLING ---
   function saveDraft() {
     try {
@@ -1317,13 +1251,7 @@ import { supabase } from './supabase.js';
         if (speechText && speech) {
           speechText.textContent = speech;
         }
-        // Play this animal's sound (stops the previous one; re-click restarts it)
-        const animalKey = resolveAnimalKey(card);
-        if (animalKey) {
-          playAnimalSound(animalKey);
-        } else {
-          playSound('click');
-        }
+        playSound('click');
       });
     });
 
@@ -1334,7 +1262,6 @@ import { supabase } from './supabase.js';
         state.audioEnabled = !state.audioEnabled;
         document.getElementById('audioIcon').textContent = state.audioEnabled ? '🔊' : '🔇';
         document.getElementById('audioText').textContent = state.audioEnabled ? 'Audio On' : 'Muted';
-        if (!state.audioEnabled) stopAnimalSound();
         if (state.audioEnabled) playSound('click');
       });
     }
